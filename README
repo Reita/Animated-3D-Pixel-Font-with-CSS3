@@ -1,0 +1,28 @@
+/--- About ---/
+This little experiment is basically a modificaction of Peter Magenheimer's
+Animated Pixel Font with CSS3 that includes CSS3 3D transforms.
+
+Just like Peter's experiment this is pretty much pure HTML5 and CSS3, with
+only minor touches of jQuery to add keyboard support and to fix certain bugs
+that arose during the creation of the experiment.
+
+This is a first release; I'm quite aware my 3d cubes can be simplified and
+the experiment could probably use 3D translations only in order to work on
+Firefox/Opera. I have included every single side of the cube however in my
+demo only 3 are being actively used.
+
+Animated Pixel Font with CSS3 http://peterjmags.com/css3-animated-type/
+
+/--- Known Issues ---/
+For some weird and unknown reason whenever you tab between anchors (or use
+tabindex in order to set active/focused states) Chrome seems to butcher the
+animation and you start getting choppy/laggy animation movements so I decided
+to omit tabindex and use some good 'ole jQuery. The choppy movement can still
+be replicated if you tab though.
+
+I didn't care about supporting other browsers; however propietary vendor 
+prefixes are already in place.
+
+Doesn't seem to work on Chrome under Ubuntu 11.04; at least not with my setup.
+
+Animation is way better on Safari compared to Chrome.
