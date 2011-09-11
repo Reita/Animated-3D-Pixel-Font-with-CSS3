@@ -1,0 +1,406 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::selection{
+  background: rgba(249,255,74,0.8);
+  color: #333;
+}
+
+body,html {
+  height: 100%;
+}
+
+body {
+  font: 16px/1.1em "Segoe UI", Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+h1 {
+  font-family: 'Yellowtail', cursive;
+  font-size: 2.5em;
+  margin: 0 0 55px 0;
+  text-align: center;
+  text-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+p {
+  font-size: 0.8em;
+  text-align: center;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+#container {
+  width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%;
+}
+
+#content {
+  position: absolute;
+  top: 27.9%;
+  left: 0;
+}
+
+#about {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 490px;
+  height: 545px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgb(255,255,255);
+  padding: 30px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2), -1px -1px 10px rgba(0,0,0,0.2);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  -ms-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+
+#about:target {
+  top: 8%;
+  opacity: 1;
+  visibility: visible;
+  
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  -ms-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+
+#about h1 {
+  font-size: 2em;
+  text-align: left;
+  letter-spacing: -1px;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0 0 20px 0;
+  font-weight: normal;
+}
+
+#about p {
+  margin: 0 0 20px 0;
+  text-align: left;
+  font-size: 1.1em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+}
+
+#about p+h1 {
+  margin-top: 40px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 210px;
+  background: rgba(0,0,0,0.1);
+  color: #444;
+  padding: 20px 15px;
+  font-size: 0.8em;
+}
+
+#about a:link,
+#about a:visited,
+footer a:link,
+footer a:visited {
+  text-decoration: none;
+  color: #0072bc;
+  border-bottom: 1px solid rgba(255,255,255,0);
+}
+
+#about a:hover,
+footer a:hover {
+  border-bottom: 1px dotted #0072bc;
+}
+
+footer li {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+footer li:last-child {
+  margin: 0;
+}
+
+#letter-selector {
+  margin: 10px 0 0 15px;
+  width: 500px;
+  text-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+#letter-selector a:link,
+#letter-selector a:visited {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 30px;
+  text-align: center;
+  padding: 15px 10px;
+  float: left;
+  background: rgba(0,0,0,0.1);
+
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#letter-selector a:nth-child(21) {
+  margin: 0 0 0 100px;
+}
+
+#letter-selector a:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+#letter-selector a:active,
+#letter-selector a:focus,
+#letter-selector a.selected {
+  background: rgba(0,0,0,1);
+  color: #fff;
+  font-weight: bold;  
+  box-shadow: -1px -1px 10px rgba(0,0,0,0.3), 1px 1px 10px rgba(0,0,0,0.3);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#alphabet-container {
+/*
+  z-index: 1;  z-index messes with Safari's animation; slows it down a lot.
+*/
+  position: absolute;
+  right: 0;
+  top: 11.2%;
+  width: 500px;
+  height: 620px;
+  padding: 0 0 0 100px;
+  overflow: hidden;
+/* This overflow hidden is what stops the browser from moving when targeting an ID */
+}
+
+.letter-container {
+  z-index: 1;
+  width: 500px;
+  height: 700px;
+  position: relative;
+  -webkit-transition: -webkit-transform 1.5s linear;
+  -moz-transition: -moz-transform 1.5s linear;
+  -o-transition: -moz-transform 1.5s linear;
+}
+
+.letter-container div {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+
+  -webkit-perspective: 1500;
+  -webkit-perspective-origin: 50% -200px;
+  -webkit-transition: -webkit-transform 1.5s linear;
+  -webkit-transform-style: preserve-3d;
+
+  -moz-perspective: 1500;
+  -moz-perspective-origin: 50% -200px;
+  -moz-transition: -moz-transform 1.5s linear;
+  -moz-transform-style: preserve-3d;
+
+  -o-perspective: 1500;
+  -o-perspective-origin: 50% -200px;
+  -o-transition: -o-transform 1.5s linear;
+  -o-transform-style: preserve-3d;
+
+  perspective: 1500;
+  perspective-origin: 50% -200px;
+  transition: transform 1.5s linear;
+  transform-style: preserve-3d;
+
+}
+
+div.x0 {
+  left: 0;
+}
+
+div.x1 {
+  left: 100px;
+}
+
+div.x2 {
+  left: 200px;
+}
+
+div.x3 {
+  left: 300px;
+}
+
+div.x4 {
+  left: 400px;
+}
+
+div.y0 {
+  top: 0;
+}  
+
+div.y1 {
+  top: 100px;
+}
+
+div.y2 {
+  top: 200px;
+}
+
+div.y3 {
+  top: 300px;
+}  
+
+div.y4 {
+  top: 400px;
+}
+
+div.y5 {
+  top: 500px;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cube {
+  position: relative;
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  -webkit-transition: -webkit-transform 1.5s linear;
+  -webkit-transform-style: preserve-3d;
+
+  -moz-transition: -moz-transform 1.5s linear;
+  -moz-transform-style: preserve-3d;
+
+  -o-transition: -o-transform 1.5s linear;
+  -o-transform-style: preserve-3d;
+
+  transition: transform 1.5s linear;
+  transform-style: preserve-3d;
+}
+
+.cube .side {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+.cube .one  {
+  -webkit-transform: rotateX(90deg) translateZ(50px);
+  -moz-transform: rotateX(90deg) translateZ(50px);
+  -o-transform: rotateX(90deg) translateZ(50px);
+  transform: rotateX(90deg) translateZ(50px);
+  z-index: 100;
+}
+
+.cube .two {
+  -webkit-transform: translateZ(50px);
+  -moz-transform: translateZ(50px);
+  -o-transform: translateZ(50px);
+  transform: translateZ(50px);
+}
+
+.cube .three {
+  -webkit-transform: rotateY(90deg) translateZ(50px);
+  -moz-transform: rotateY(90deg) translateZ(50px);
+  -o-transform: rotateY(90deg) translateZ(50px);
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.cube .four {
+  -webkit-transform: rotateY(-90deg) translateZ(50px);
+  -moz-transform: rotateY(-90deg) translateZ(50px);
+  -o-transform: rotateY(-90deg) translateZ(50px);
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.cube .five {
+  -webkit-transform: rotateY(180deg) translateZ(50px);
+  -moz-transform: rotateY(180deg) translateZ(50px);
+  -o-transform: rotateY(180deg) translateZ(50px);
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+.cube .six {
+  -webkit-transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+  -moz-transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+  -o-transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+  transform: rotateX(-90deg) translateZ(50px) rotate(180deg);
+}
+
+.cube .one,
+.cube .two,
+.cube .three,
+.cube .four,
+.cube .five,
+.cube .six {
+/*  border: 1px solid #fff;*/
+  background: rgba(255,255,255,1);
+}
+
+/* Hover Rotations */
+div:target div {
+  -webkit-perspective: 0;
+  -webkit-perspective-origin: 50% -200px;
+
+}
+
+div:target .cube {  
+  -webkit-transform: rotateX(-9deg) rotateY(270deg) rotateZ(-9deg);
+  -moz-transform: rotateX(-9deg) rotateY(270deg) rotateZ(-9deg);
+  -o-transform: rotateX(-9deg) rotateY(270deg) rotateZ(-9deg);
+  transform: rotateX(-9deg) rotateY(270deg) rotateZ(-9deg);
+}
+
+div:target .cube,
+div:target .cube .one,
+div:target .cube .two,
+div:target .cube .three,
+div:target .cube .four,
+div:target .cube .five,
+div:target .cube .six {
+/*  border: 1px solid #000;*/
+}
+
+
+div:target .cube .three {
+  background: #000;
+}
+
+div:target .cube .four {
+  background: #666;
+}
+
+div:target .cube .five {
+  background: #333;
+}
